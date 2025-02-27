@@ -9,7 +9,7 @@ def print_sleep(message, wait_time):
 
 
 def print_sleep_2s(message):
-    print_sleep(message, 1)
+    print_sleep(message, 2)
 
 
 def intro():
@@ -159,7 +159,9 @@ while game_on is True:
     enemies_health = 8 + enemies.index(enemy)
     weapon = random.choice(weapons)
     intro()
-    print("GAME OVER")
+    print("===========")
+    print("=GAME OVER=")
+    print("===========")
     print_sleep_2s(
         "You have a score of "
         + str(10 + own_health)
@@ -167,7 +169,7 @@ while game_on is True:
         + str(house_visits)
     )
     print_sleep_2s(
-        "Thanks for playing the Adventure \n brought to you by Udacity and Uwe"
+        "Thanks for playing the Adventure \nbrought to you by Udacity and Uwe"
     )
     replay = input("Would you like to play again? (y/n)")
     if replay not in ["y", "Y"]:
