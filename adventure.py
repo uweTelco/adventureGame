@@ -30,15 +30,18 @@ def starting_choice():
             print_sleep("Gerat you defeeded the bad " + dead_enemie, 5)
             return
     else:
-        print_sleep_2s("It might be a good idea to " + "visit the house more often.")
+        print_sleep_2s("It might be a good idea" +
+                       " to visit the house more often.")
         return
     print_sleep_2s("In front of you is a house.")
     print_sleep_2s("To your right is a dark cave.")
     print_sleep_2s(
-        "In your hand you hold your trusty (but not very effective) " + weapon + "."
+        "In your hand you hold your trusty (but not very effective) "
+        + weapon + "."
     )
     print_sleep_2s(
-        "Make a choice: Go into the cave (press 1) " + "or knock at the door (press 2)"
+        "Make a choice: Go into the cave (press 1) " +
+        "or knock at the door (press 2)"
     )
     next_step = -1
     while next_step not in [1, 2]:
@@ -62,7 +65,8 @@ def fight():
     global own_health, enemies_health, dead_enemie, enemy
     os.system("clear")
     print_sleep_2s(
-        "You take out your weapon: " + weapon + " and prepare to fight the enemy."
+        "You take out your weapon: " + weapon +
+        " and prepare to fight the enemy."
     )
     hit_minimun = -1 - enemies.index(enemy)
     hit_maximum = 0
@@ -110,7 +114,8 @@ def cave():
         visit_cave = True
     else:
         print_sleep_2s(
-            "Nothing has changed here," + " now this room seems dark and empty."
+            "Nothing has changed here," +
+            " now this room seems dark and empty."
         )
     starting_choice()
 
