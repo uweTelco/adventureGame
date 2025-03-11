@@ -4,15 +4,31 @@ import os
 
 
 def print_sleep(message, wait_time):
+    """
+    Prints the "message" and sleeps the process shortly
+    
+    Parameters:
+    message (String): The message to be displayed
+    wait_time (int): Time in seconds to sleep 
+    """
     print(message)
     time.sleep(wait_time)
 
 
 def print_sleep_2s(message):
+    """
+    Prints the message and delays the process for 2 seconds.
+    
+    Parameters:
+    message (String): The message to be displayed
+    """
     print_sleep(message, 2)
 
 
 def intro():
+    """
+    Intro of the game. 
+    """
     print_sleep_2s(
         "You find yourself standing in an open field, "
         + "filled with grass and yellow wildflowers."
@@ -25,6 +41,10 @@ def intro():
 
 
 def starting_choice():
+    """
+    Displays the primary choice where the user stands at the begining
+    other times while the game. 
+    """
     if own_health > 0:
         if dead_enemie in enemies:
             print_sleep("Gerat you defeeded the bad " + dead_enemie, 5)
@@ -61,6 +81,11 @@ def starting_choice():
 
 
 def fight():
+    """
+    Simulates the fight of the user against a random enemy. 
+    Uses a number of global existing variables:
+    own_health, enemies_health, dead_enemie, enemy
+    """
     # Things that happen when the player fights
     global own_health, enemies_health, dead_enemie, enemy
     os.system("clear")
@@ -106,6 +131,9 @@ def fight():
 
 
 def cave():
+    """
+    Describes the user what he can find in the cave.
+    """
     # Things that happen to the player goes in the cave
     global visit_cave, weapon
     if visit_cave is False:
@@ -121,6 +149,9 @@ def cave():
 
 
 def field():
+    """
+    The talk of the enemy before the fight, and calls fight.
+    """
     # Things that happen when the player runs back to the field
     print_sleep_2s('"I was waiting for you" says the ' + enemy)
     print_sleep_2s("There is no choice, you have to fight, ")
@@ -129,6 +160,10 @@ def field():
 
 
 def house():
+    """
+    Describes the situation inside the house.
+    The user will be healt a little here.
+    """
     # Things that happen to the player in the house
     health_plus = random.randint(1, 7)
     print_sleep_2s("A little elf opens the door and welcomes you in.")
@@ -145,6 +180,16 @@ def house():
 
 
 def add_health(a):
+    """
+    Adds helath to the users health, and takes care that the user
+    can not have a higher helath than 12
+    
+    Parameters:
+    a (int): The number to increase the health.
+    
+    Returns: 
+    int: The new health of the user
+    """
     result = a + own_health
     if result > 12:
         return 12  # or you could return the sum capped at 10
