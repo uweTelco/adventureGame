@@ -1,7 +1,9 @@
 import time
 import random
 import os
-
+"""
+This module enables you to play an adventure game.
+"""
 
 def print_sleep(message, wait_time):
     """
@@ -45,9 +47,9 @@ def starting_choice():
     Displays the primary choice where the user stands at the begining
     other times while the game. 
     """
-    if own_health > 0:
-        if dead_enemie in enemies:
-            print_sleep("Gerat you defeeded the bad " + dead_enemie, 5)
+    if OWN_HEALTH > 0:
+        if DEAD_ENEMIE in enemies:
+            print_sleep("Gerat you defeeded the bad " + DEAD_ENEMIE, 5)
             return
     else:
         print_sleep_2s("It might be a good idea" +
@@ -84,10 +86,10 @@ def fight():
     """
     Simulates the fight of the user against a random enemy. 
     Uses a number of global existing variables:
-    own_health, enemies_health, dead_enemie, enemy
+    OWN_HEALTH, enemies_health, DEAD_ENEMIE, enemy
     """
     # Things that happen when the player fights
-    global own_health, enemies_health, dead_enemie, enemy
+    global OWN_HEALTH, enemies_health, DEAD_ENEMIE, enemy
     os.system("clear")
     print_sleep_2s(
         "You take out your weapon: " + weapon +
@@ -105,15 +107,15 @@ def fight():
         print_sleep_2s("It loses " + str(hit) + " from its health.")
         enemies_health -= hit
         if enemies_health <= 0:
-            dead_enemie = enemy
+            DEAD_ENEMIE = enemy
             return
     elif hit < 0:
         print_sleep_2s(
             "Oh no, the enemy punched you hard and your health goes down by "
             + str(hit * -1)
         )
-        own_health += hit
-        if own_health <= 0:
+        OWN_HEALTH += hit
+        if OWN_HEALTH <= 0:
             return
     print_sleep_2s("Now after this round, you seem to have a choice of ")
     print_sleep_2s("Continue the fight by pressing 1 or ")
@@ -135,11 +137,11 @@ def cave():
     Describes the user what he can find in the cave.
     """
     # Things that happen to the player goes in the cave
-    global visit_cave, weapon
-    if visit_cave is False:
+    global VISIT_CAVE, weapon
+    if VISIT_CAVE is False:
         print_sleep_2s("Great you found a sword, this might help you.")
         weapon = "sword"
-        visit_cave = True
+        VISIT_CAVE = True
     else:
         print_sleep_2s(
             "Nothing has changed here," +
@@ -172,7 +174,7 @@ def house():
         + str(health_plus)
         + "."
     )
-    own_health = add_health(health_plus)
+    OWN_HEALTH = add_health(health_plus)
     print_sleep_2s(
         "As you leave the house, you see the evil " + enemy + " on the field."
     )
@@ -190,7 +192,7 @@ def add_health(a):
     Returns: 
     int: The new health of the user
     """
-    result = a + own_health
+    result = a + OWN_HEALTH
     if result > 12:
         return 12  # or you could return the sum capped at 10
     return result
@@ -199,10 +201,10 @@ def add_health(a):
 game_on = True
 while game_on is True:
     os.system("clear")
-    visit_cave = False
-    dead_enemie = ""
-    own_health = 10
-    house_visits = 0
+    VISIT_CAVE = False
+    DEAD_ENEMIE = ""
+    OWN_HEALTH = 10
+    HOUSE_VISITS = 0
     weapons = ["dagger", "boomerang", "stick"]
     enemies = ["troll", "wicked fairie", "pirate", "gorgon", "dragon"]
     enemy = random.choice(enemies)
@@ -214,9 +216,9 @@ while game_on is True:
     print("===========")
     print_sleep_2s(
         "You have a score of "
-        + str(10 + own_health)
+        + str(10 + OWN_HEALTH)
         + " and  visited the house "
-        + str(house_visits)
+        + str(HOUSE_VISITS)
     )
     print_sleep_2s(
         "Thanks for playing the Adventure \nbrought to you by Udacity and Uwe"
